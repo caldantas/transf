@@ -1,0 +1,43 @@
+{
+	"@type":"MDXView",
+	"Name":"Default_MDX",
+	"MDX@Code.link":"Default_MDX.mdx",
+	"IsAutocalculate" : true,
+	"IsDeferComputeOnLeafDataEntry" : false,
+	"IsSuppressComputeOnOpen" : false,
+	"Meta" : 
+	{
+		"Aliases" : 
+		{
+			"[Channel].[Channel]" : "Caption_Default",
+			"[Revenue].[Revenue]" : "Caption_Default",
+			"[Version].[Version]" : "Caption_Default",
+			"[Year].[Year]" : "Caption_Default",
+			"[organization].[organization]" : "Caption_Default",
+			"[product].[product]" : "Caption_Default"
+		},
+		"ContextSets" : 
+		{
+			"[Month].[Month]" : 
+			{
+				"IsPublic" : true,
+				"SubsetName" : "MY"
+			},
+			"[Year].[Year]" : 
+			{
+				"IsPublic" : true,
+				"SubsetName" : "Default"
+			}
+		},
+		"ExpandAboves" : 
+		{
+			"[Channel].[Channel]" : false,
+			"[Month].[Month]" : false,
+			"[Revenue].[Revenue]" : false,
+			"[Version].[Version]" : false,
+			"[Year].[Year]" : false,
+			"[organization].[organization]" : false,
+			"[product].[product]" : false
+		}
+	}
+}
