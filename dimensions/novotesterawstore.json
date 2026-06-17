@@ -1,0 +1,12 @@
+{
+	"@type":"Dimension",
+	"Name":"novotesterawstore",
+	"Hierarchies@Code.links":
+	[
+		"novotesterawstore.hierarchies/novotesterawstore.json"
+	],
+	"DefaultHierarchy":
+	{
+		"@id":"Dimensions('novotesterawstore')/Hierarchies('novotesterawstore')"
+	}
+}

@@ -1,0 +1,12 @@
+{
+	"@type":"Hierarchy",
+	"Name":"novotesterawstore",
+	"Elements":
+	[
+		{
+			"Name":"raiz",
+			"Type":"Numeric"
+		}
+	],
+	"Subsets@Code.links":[]
+}
