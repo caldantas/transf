@@ -1,0 +1,27 @@
+#region Prolog
+
+vCube =   '}ElementAttributes_' | pDimension;
+vView =  '}git';
+vExportFile = pDir | pDimension | '.csv';
+
+ViewCreate( vCube, vView, 1 );
+ViewColumnDimensionSet( vCube, vView, pDimension, 1 );
+SubsetCreatebyMDX( vView, '[' | pDimension | '].[' | pDimension | '].MEMBERS', pDimension, 1 );
+ViewSubsetAssign( vCube, vView, pDimension, vView );
+ViewColumnDimensionSet( vCube, vView, vCube, 2 );
+SubsetCreatebyMDX( vView, '[' | vCube | '].[' | vCube | '].MEMBERS', vCube, 1 );
+ViewSubsetAssign( vCube, vView, vCube, vView );
+
+DataSourceType = 'VIEW';
+DatasourceNameForServer = vCube;
+DatasourceCubeview = vView;
+#endregion
+#region Data
+
+#vAttributeType = DTYPE( vCube, v2 );
+# ASCIIOutput( vExportFile, vAttributeType, v1, v2, value );
+
+
+# É claro que vou apagar tudo que não seja eu
+
+#endregion

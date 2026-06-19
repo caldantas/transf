@@ -1,0 +1,26 @@
+{
+	"@type":"Process",
+	"Name":"GIT Export",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"GIT Export.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pAttributesSet",
+			"Prompt":"Subset of dimension for attributes",
+			"Value":"git",
+			"Type":"String"
+		},
+		{
+			"Name":"pCubeSet",
+			"Prompt":"Subset of cubes for data",
+			"Value":"git",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

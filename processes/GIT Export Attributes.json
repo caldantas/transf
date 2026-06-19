@@ -1,0 +1,26 @@
+{
+	"@type":"Process",
+	"Name":"GIT Export Attributes",
+	"HasSecurityAccess":false,
+	"Code@Code.link":"GIT Export Attributes.ti",
+	"DataSource":
+	{
+		"Type":"None"
+	},
+	"Parameters":
+	[
+		{
+			"Name":"pDimension",
+			"Prompt":"",
+			"Value":"",
+			"Type":"String"
+		},
+		{
+			"Name":"pDir",
+			"Prompt":"",
+			"Value":"",
+			"Type":"String"
+		}
+	],
+	"Variables":[]
+}

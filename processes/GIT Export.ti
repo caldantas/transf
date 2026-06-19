@@ -1,0 +1,67 @@
+#region Prolog
+
+vAttributeExportFile =  '/git/attributes';
+vDataExportFile        =  '/git/cubes';
+
+# Attributes
+
+if (SubsetExists( '}Dimensions', pAttributesSet ) = 0);
+    SubsetCreate( '}Dimensions', pAttributesSet, 1 );
+    index = 1;
+    vDimension = DIMNM( '}Dimensions', index );
+    while (vDimension @<> '');
+        if ( SCAN( '}', vDimension ) <> 1 & SCAN( ':', vDimension ) = 0);
+            SubsetElementInsert( '}Dimensions', pAttributesSet, vDimension, SubsetGetSize( '}Dimensions', pAttributesSet ) + 1 );
+        endif;
+        index = index + 1;
+        vDimension = DIMNM( '}Dimensions', index );
+    end;
+endif;
+
+index = 1;
+setSize = SubsetGetSize( '}Dimensions', pAttributesSet );
+if (setSize > 0);
+    vDimension = SubsetGetElementName(  '}Dimensions', pAttributesSet, index );
+    vAttributesCube =  '}ElementAttributes_' | vDimension;
+    if ( CubeExists( vAttributesCube ) = 1 & ElementCount( vAttributesCube, vAttributesCube ) > 0 );
+        ExecuteProcess( 'GIT Export Attributes', 'pDimension', vDimension, 'pDir', vAttributeExportFile );
+    endif;
+    while ( index < setSize ); 
+        index = index + 1;
+        vDimension = SubsetGetElementName(  '}Dimensions', pAttributesSet, index );
+         vAttributesCube =  '}ElementAttributes_' | vDimension;
+        if ( CubeExists( vAttributesCube ) = 1 & ElementCount( vAttributesCube, vAttributesCube ) > 0 );
+            ExecuteProcess( 'GIT Export Attributes', 'pDimension', vDimension, 'pDir', vAttributeExportFile );
+        endif;
+    end;
+endif;
+
+# Cube data
+
+if (SubsetExists( '}Cubes', pCubeSet ) = 0);
+    SubsetCreate( '}Cubes', pCubeSet, 1 );
+    index = 1;
+    vCube = DIMNM( '}Cubes', index );
+    while (vCube @<> '');
+        if ( SCAN( '}', vCube ) <> 1 );
+            SubsetElementInsert( '}Cubes', pCubeSet, vCube, SubsetGetSize( '}Cubes', pCubeSet ) + 1 );
+        endif;
+        index = index + 1;
+        vCube = DIMNM( '}Cubes', index );
+    end;
+endif;
+
+index = 1;
+setSize = SubsetGetSize( '}Cubes', pCubeSet );
+if (setSize > 0);
+    vCube = SubsetGetElementName(  '}Cubes', pCubeSet, index );
+    ExecuteProcess( 'GIT Export Data', 'pCube', vCube, 'pDir',vDataExportFile );
+    while ( index < setSize ); 
+        index = index + 1;
+        vCube = SubsetGetElementName(  '}Cubes', pCubeSet, index );
+        ExecuteProcess( 'GIT Export Data', 'pDCube', vCube, 'pDir', vDataExportFile );
+    end;
+endif;
+
+## Acaba por aqui
+#endregion
